@@ -1,26 +1,734 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================================
+   Modern JariBakat Signature Palette Design Tokens
+   ============================================================ */
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  /* Font families */
+  --font-sans: "Plus Jakarta Sans", "Plus Jakarta Sans Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, monospace;
+  --font-heading: var(--font-sans);
+
+  /* Modern JariBakat Signature Palette */
+  --color-jb-indigo: #1E1B4B;        /* Primary Base / Brand Anchor */
+  --color-jb-indigo-hover: #17153B;  /* Darker indigo hover */
+  --color-jb-indigo-light: #E0E7FF;  /* Soft indigo tint */
+  --color-jb-amber: #F59E0B;         /* Primary Accent / Conversion (CTAs) */
+  --color-jb-amber-hover: #D97706;   /* Darker amber hover */
+  --color-jb-amber-light: #FEF3C7;   /* Soft amber tint */
+  --color-jb-teal: #0D9488;          /* Secondary Accent / Data Indicators */
+  --color-jb-teal-hover: #0F766E;    /* Darker teal hover */
+  --color-jb-teal-light: #CCFBF1;    /* Soft teal tint */
+  --color-jb-dark: #0F172A;          /* Primary Typography */
+  --color-jb-slate: #F8FAFC;         /* Main Background Surface */
+  --color-jb-white: #FFFFFF;         /* Card Containers & Containers */
+
+  /* InsightMe legacy color alias mappings */
+  --color-im-green: #1E1B4B;         /* Deep Electric Indigo */
+  --color-im-green-secondary: #0D9488;/* Digital Mint / Teal */
+  --color-im-green-light: #CCFBF1;   /* Soft teal tint */
+  --color-im-green-white: #F8FAFC;   /* Soft Ice Slate */
+  --color-im-green-hover: #17153B;
+  --color-im-green-focus: #1E1B4B;
+  --color-im-green-active: #131131;
+  --color-im-yellow: #F59E0B;        /* Warm Glowing Amber */
+  --color-im-yellow-light: #FEF3C7;
+  --color-im-yellow-hover: #D97706;
+  --color-im-yellow-focus: #F59E0B;
+  --color-im-yellow-active: #B45309;
+  --color-im-red: #D1214A;
+  --color-im-red-light: #FFE6E8;
+  --color-im-blue: #1E1B4B;         /* Deep Electric Indigo */
+  --color-im-blue-light: #F8FAFC;
+  --color-im-maize: #FEF3C7;
+  --color-im-dark: #0F172A;          /* Cool Zinc Dark */
+  --color-im-text: #0F172A;          /* Cool Zinc Dark */
+  --color-im-muted: #64748B;         /* Muted Slate */
+  --color-im-border: #E2E8F0;
+  --color-im-line: #94A3B8;
+  --color-im-line-light: #E2E8F0;
+  --color-im-white-secondary: #F1F5F9;
+  --color-im-footer: #0F172A;        /* Cool Zinc Dark */
+
+  /* shadcn token aliases */
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  /* Radius */
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  /* Modern JariBakat Signature Palette */
+  --background: #F8FAFC;             /* Soft Ice Slate */
+  --foreground: #0F172A;             /* Cool Zinc Dark */
+  --card: #FFFFFF;                 /* Crisp Pure White */
+  --card-foreground: #0F172A;        /* Cool Zinc Dark */
+  --popover: #FFFFFF;              /* Crisp Pure White */
+  --popover-foreground: #0F172A;     /* Cool Zinc Dark */
+  --primary: #1E1B4B;               /* Deep Electric Indigo */
+  --primary-foreground: #FFFFFF;     /* Crisp Pure White */
+  --secondary: #F59E0B;             /* Warm Glowing Amber */
+  --secondary-foreground: #FFFFFF;   /* Crisp Pure White */
+  --muted: #F1F5F9;                /* Soft Slate */
+  --muted-foreground: #64748B;
+  --accent: #0D9488;                /* Digital Mint / Teal */
+  --accent-foreground: #FFFFFF;
+  --destructive: #EF4444;
+  --border: #E2E8F0;
+  --input: #E2E8F0;
+  --ring: #1E1B4B;
+  --radius: 0.625rem;
+}
+
+/* ============================================================
+   Base Styles
+   ============================================================ */
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+    color: #0F172A;
+  }
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+  }
+  a {
+    text-decoration: none;
+  }
+  pre {
+    white-space: break-spaces;
+    margin: 0;
+    padding: 0;
+    overflow: unset;
+    font-family: var(--font-sans);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ============================================================
+   Container (Matched perfectly to insightme.id Bootstrap 5 + custom.css)
+   ============================================================ */
+
+.container-lg {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  /* Default Bootstrap container max-widths */
+  padding-left: 80px; /* from --bs-gutter-x: 160px / 2 */
+  padding-right: 80px;
+}
+
+@media (min-width: 576px) {
+  .container-lg {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container-lg {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container-lg {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container-lg {
+    max-width: 1140px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .container-lg {
+    max-width: 1320px;
+  }
+}
+
+/* InsightMe Custom Overrides for gutter */
+@media (max-width: 1439px) {
+  .container-lg {
+    padding-left: 50px; /* from --bs-gutter-x: 100px / 2 */
+    padding-right: 50px;
+  }
+}
+
+@media (max-width: 991px) {
+  .container-lg {
+    padding-left: 18px; /* from --bs-gutter-x: 36px / 2 */
+    padding-right: 18px;
+  }
+}
+
+/* ============================================================
+   Marquee / Running Text Animation
+   ============================================================ */
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.banner-marquee .marquee .track {
+  display: flex;
+  animation: marquee 30s linear infinite;
+  width: max-content;
+}
+
+.banner-marquee .marquee .track > div {
+  display: flex;
+  white-space: nowrap;
+}
+
+.banner-running-text {
+  position: relative;
+  overflow: hidden;
+}
+
+.banner-running-text.black {
+  background-color: #252525;
+  color: #ffffff;
+}
+
+/* ============================================================
+   Navbar Styles
+   ============================================================ */
+
+.navbar {
+  background-color: #ffffff;
+  padding: 16px 0;
+}
+
+.navbar .navbar-brand img {
+  max-width: 130px;
+  height: auto;
+}
+
+.nav-link {
+  font-weight: 500;
+  color: #252525;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #00706E;
+}
+
+/* Dropdown mega menu */
+.dropdown-menu {
+  border: none;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  padding: 24px;
+  min-width: 100%;
+  left: 0;
+  right: 0;
+}
+
+/* ============================================================
+   Carousel / Hero Banner
+   ============================================================ */
+
+.benner-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  max-height: 720px;
+}
+
+.benner-caption {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+@media (max-width: 991px) {
+  .benner-img {
+    max-height: 400px;
+  }
+  .benner-caption {
+    bottom: 20px;
+  }
+}
+
+/* ============================================================
+   Program Cards
+   ============================================================ */
+
+.card-program {
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.card-program:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.card-program .content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.card-program .content .image {
+  width: 80px;
+  height: 80px;
+  min-width: 80px;
+  min-height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.card-program .content .title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #252525;
+  text-decoration: none;
+}
+
+.card-program .content .description {
+  font-size: 14px;
+  color: #7C7C7C;
+}
+
+.card-program.bg-primary-light {
+  background-color: #CCFBF1;
+  border-color: #CCFBF1;
+}
+
+/* ============================================================
+   USP Section
+   ============================================================ */
+
+.home-usp .wrapper {
+  display: flex;
+  gap: 48px;
+  align-items: stretch;
+}
+
+.home-usp .left-side {
+  font-size: 36px;
+  line-height: 1.3;
+  min-width: 300px;
+  white-space: break-spaces;
+  font-family: var(--font-sans);
+}
+
+.home-usp .right-side {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  flex: 1;
+}
+
+.home-usp .vertical-line-400 {
+  width: 2px;
+  height: 400px;
+  background-color: #E9E9E9;
+  flex-shrink: 0;
+}
+
+@media (max-width: 991px) {
+  .home-usp .wrapper {
+    flex-direction: column;
+    gap: 32px;
+  }
+  .home-usp .left-side {
+    font-size: 28px;
+    min-width: unset;
+  }
+  .home-usp .vertical-line-400 {
+    display: none;
+  }
+}
+
+/* ============================================================
+   Topics Section
+   ============================================================ */
+
+.home-topics {
+  padding: 80px 0;
+}
+
+.bg-image-gradient-3 {
+  background: linear-gradient(135deg, #1E1B4B 0%, #17153B 50%, #0F172A 100%);
+}
+
+.home-topics .header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* ============================================================
+   CTA Community Section
+   ============================================================ */
+
+.home-cta-community {
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-primary-gradient-2 {
+  background: linear-gradient(135deg, #1E1B4B 0%, #17153B 100%);
+  border-radius: 0 24px 24px 0;
+  padding: 60px 80px;
+}
+
+.home-cta-community .image {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: auto;
+  object-fit: cover;
+}
+
+@media (max-width: 991px) {
+  .bg-primary-gradient-2 {
+    border-radius: 0;
+    padding: 40px 36px;
+  }
+  .home-cta-community .image {
+    display: none;
+  }
+}
+
+/* ============================================================
+   Footer
+   ============================================================ */
+
+.site-footer {
+  background-color: #343434;
+  padding-top: 80px;
+  padding-bottom: 60px;
+  color: #ffffff;
+}
+
+.site-footer a {
+  transition: color 0.2s ease;
+}
+
+.text-white-secondary {
+  color: #D3D3D3;
+}
+
+.text-white-secondary:hover {
+  color: #ffffff;
+}
+
+/* ============================================================
+   Floating Buttons
+   ============================================================ */
+
+.floatings {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1040;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.floatings a {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 28px;
+  transition: transform 0.2s ease;
+  background-color: #25D366;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.floatings a:hover {
+  transform: scale(1.1);
+}
+
+.icon-circle {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border: 3px solid #F79526;
+  border-radius: 50%;
+  background-color: #FFFAF0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 24px;
+  color: #F79526;
+}
+
+.badge-new {
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  background-color: #f8d7da;
+  color: #c82333;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* ============================================================
+   Utility Classes (from InsightMe custom.css)
+   ============================================================ */
+
+/* Flex utilities */
+.flex-center-8 { display: flex; align-items: center; gap: 8px; }
+.flex-center-10 { display: flex; align-items: center; gap: 10px; }
+.flex-center-12 { display: flex; align-items: center; gap: 12px; }
+.flex-center-16 { display: flex; align-items: center; gap: 16px; }
+.flex-column-8 { display: flex; flex-direction: column; gap: 8px; }
+.flex-column-10 { display: flex; flex-direction: column; gap: 10px; }
+.flex-column-16 { display: flex; flex-direction: column; gap: 16px; }
+
+/* Size utilities */
+.size-24 { width: 24px; height: 24px; }
+.size-32 { width: 32px; height: 32px; }
+.size-40 { width: 40px; height: 40px; }
+.size-44 { width: 44px; height: 44px; }
+.size-48 { width: 48px; height: 48px; }
+.size-54 { width: 54px; height: 54px; min-width: 54px; min-height: 54px; }
+.size-60 { width: 60px; height: 60px; min-width: 60px; min-height: 60px; }
+.size-64 { width: 64px; height: 64px; min-width: 64px; min-height: 64px; }
+.size-80 { width: 80px; height: 80px; min-width: 80px; min-height: 80px; object-fit: cover; }
+.size-120 { width: 120px; height: 120px; min-width: 120px; min-height: 120px; }
+
+/* Text line clamp */
+.text-1-line { overflow: hidden; -webkit-line-clamp: 1; -webkit-box-orient: vertical; display: -webkit-box; }
+.text-2-line { overflow: hidden; -webkit-line-clamp: 2; -webkit-box-orient: vertical; display: -webkit-box; }
+.text-3-line { overflow: hidden; -webkit-line-clamp: 3; -webkit-box-orient: vertical; display: -webkit-box; }
+
+/* Border radius */
+.border-radius-4 { border-radius: 4px; }
+.border-radius-6 { border-radius: 6px; }
+.border-radius-8 { border-radius: 8px; }
+.border-radius-10 { border-radius: 10px; }
+.border-radius-12 { border-radius: 12px; }
+.border-radius-14 { border-radius: 14px; }
+.border-radius-16 { border-radius: 16px; }
+.border-radius-18 { border-radius: 18px; }
+.border-radius-20 { border-radius: 20px; }
+.border-radius-24 { border-radius: 24px; }
+
+/* Card border */
+.card-border {
+  border: 1px solid #E9E9E9;
+}
+
+/* Max width utility */
+.w-max-130px { max-width: 130px; }
+.w-max-fit { width: max-content; }
+
+/* Font sizes */
+.fs-12 { font-size: 12px; }
+.fs-14 { font-size: 14px; }
+.fs-16 { font-size: 16px; }
+.fs-18 { font-size: 18px; }
+.fs-20 { font-size: 20px; }
+.fs-24 { font-size: 24px; }
+.fs-30 { font-size: 30px; }
+.fs-32 { font-size: 32px; }
+.fs-36 { font-size: 36px; }
+
+/* Font weights */
+.fw-medium { font-weight: 500; }
+.fw-bold { font-weight: 700; }
+.fw-bolder { font-weight: 800; }
+
+/* Spacing utilities */
+.py-8 { padding-top: 8px; padding-bottom: 8px; }
+.py-12 { padding-top: 12px; padding-bottom: 12px; }
+.py-22 { padding-top: 22px; padding-bottom: 22px; }
+.py-28 { padding-top: 28px; padding-bottom: 28px; }
+.px-36 { padding-left: 36px; padding-right: 36px; }
+.mb-16 { margin-bottom: 16px; }
+.mb-20 { margin-bottom: 20px; }
+.mb-24 { margin-bottom: 24px; }
+.mb-80 { margin-bottom: 80px; }
+.mb-128 { margin-bottom: 128px; }
+.my-40 { margin-top: 40px; margin-bottom: 40px; }
+.pt-100 { padding-top: 100px; }
+.pb-60 { padding-bottom: 60px; }
+
+/* Buttons (InsightMe style) */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  line-height: 1.5;
+}
+
+.btn-primary {
+  background-color: #1E1B4B;
+  color: #ffffff;
+  border-color: #1E1B4B;
+}
+
+.btn-primary:hover {
+  background-color: #17153B;
+  border-color: #17153B;
+}
+
+.btn-secondary {
+  background-color: #F59E0B;
+  color: #ffffff;
+  border-color: #F59E0B;
+}
+
+.btn-secondary:hover {
+  background-color: #D97706;
+  border-color: #D97706;
+}
+
+.btn-outline-secondary {
+  background-color: transparent;
+  color: #F59E0B;
+  border-color: #F59E0B;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #F59E0B;
+  color: #ffffff;
+}
+
+.btn-outline-primary {
+  background-color: transparent;
+  color: #1E1B4B;
+  border-color: #1E1B4B;
+}
+
+.btn-outline-primary:hover {
+  background-color: #1E1B4B;
+  color: #ffffff;
+}
+
+.btn-link {
+  background-color: transparent;
+  color: inherit;
+  border-color: transparent;
+  padding: 12px 24px;
+}
+
+.btn-link:hover {
+  color: #1E1B4B;
+}
+
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Stretched link pattern */
+.stretched-link::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  content: "";
+}
+
+/* Z-index utilities */
+.z-index-1045 { z-index: 1045; }
+
+/* Misc */
+.content-tiny p { margin: 0; }
+.text-primary { color: #1E1B4B; }
+.text-dark { color: #0F172A; }
+.tex-grey, .text-muted { color: #64748B; }
+
+/* Carousel controls */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 48px;
+  height: 48px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.carousel-control-prev { left: 24px; }
+.carousel-control-next { right: 24px; }
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  opacity: 1;
+}
+
+/* Offcanvas (mobile menu) */
+.offcanvas-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1040;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
 }
