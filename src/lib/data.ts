@@ -174,7 +174,7 @@ export const EVENT_CATALOG: EventCatalogItem[] = [
       "https://storage.googleapis.com/insightme-production/file/hqm3bDj6PfkXwdvB4LU0JunSLd8yyLU8nJqKqQWR.webp",
     price: "Rp 350.000",
     badge: "Terpopuler",
-    href: "/event",
+    href: "https://wa.me/6285196235285",
   },
   {
     id: "paket-remaja-dewasa-catalog",
@@ -192,7 +192,7 @@ export const EVENT_CATALOG: EventCatalogItem[] = [
       "https://storage.googleapis.com/insightme-production/file/cHaVs1OBQJiZF9dfWDnkM9i1WHZvV5w6oltkoiXh.webp",
     price: "Rp 450.000",
     badge: "Rekomendasi Karir",
-    href: "/event",
+    href: "https://wa.me/6285196235285",
   },
   {
     id: "paket-2-anak-catalog",
@@ -210,7 +210,7 @@ export const EVENT_CATALOG: EventCatalogItem[] = [
       "https://storage.googleapis.com/insightme-production/file/YvG57ScA7ijekdwW88lhthN4eRkiqfaPZ1EjgGFQ.webp",
     price: "Rp 550.000",
     badge: "Paket Hemat",
-    href: "/event",
+    href: "https://wa.me/6285196235285",
   },
   {
     id: "paket-keluarga-catalog",
@@ -228,7 +228,7 @@ export const EVENT_CATALOG: EventCatalogItem[] = [
       "https://storage.googleapis.com/insightme-production/file/program/thumb/qcilu5bVlP9fVXKvLswMJsNi8P9SzH556aVYMrnT.webp",
     price: "Rp 750.000",
     badge: "Best Value",
-    href: "/expert",
+    href: "https://wa.me/6285196235285",
   },
 ];
 
