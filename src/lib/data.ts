@@ -91,7 +91,7 @@ export const ONLINE_PROGRAMS: ProgramItem[] = [
       "Analisa bakat & potensi dasar anak, gaya belajar (visual, auditori, kinestetik), rekomendasi pola mendidik & E-book panduan orang tua. (Rp 350.000)",
     image:
       "https://storage.googleapis.com/insightme-production/file/program/thumb/PNvr7ONxw3sgrs4KaCVMcIqgSFhevxkxV3kQBFzy.png",
-    href: "/event",
+    href: "https://wa.me/6285196235285",
   },
   {
     slug: "paket-remaja-dewasa",
@@ -100,7 +100,7 @@ export const ONLINE_PROGRAMS: ProgramItem[] = [
       "Cocok untuk pelajar & usia produktif. Analisa minat & bakat spesifik, rekomendasi jurusan & karir, tipe kepribadian, potensi kerja & sertifikat resmi. (Rp 450.000)",
     image:
       "https://storage.googleapis.com/insightme-production/file/program/thumb/mhz5McXb5A0QNLTFTGSVuMiYg7XU7Cc8fcaMEI9F.png",
-    href: "/event",
+    href: "https://wa.me/6285196235285",
   },
   {
     slug: "paket-2-anak",
@@ -109,7 +109,7 @@ export const ONLINE_PROGRAMS: ProgramItem[] = [
       "Semua fitur Paket Anak untuk 2 anak sekaligus, perbandingan potensi kedua anak, dan insight pola asuh yang disesuaikan untuk masing-masing anak. (Rp 550.000)",
     image:
       "https://storage.googleapis.com/insightme-production/file/program/thumb/qcilu5bVlP9fVXKvLswMJsNi8P9SzH556aVYMrnT.webp",
-    href: "/event",
+    href: "https://wa.me/6285196235285",
   },
   {
     slug: "paket-keluarga",
@@ -118,7 +118,7 @@ export const ONLINE_PROGRAMS: ProgramItem[] = [
       "Analisa lengkap seluruh anggota keluarga, kecocokan karakter antar anggota keluarga, rekomendasi pola komunikasi, jurusan & karir, serta konsultasi prioritas. (Rp 750.000)",
     image:
       "https://storage.googleapis.com/insightme-production/file/program/thumb/fLKzBHUjRjox2OBWLTW9rshn7QPkfv9xqPYpaW9Z.png",
-    href: "/event",
+    href: "https://wa.me/6285196235285",
   },
 ];
 
@@ -130,7 +130,7 @@ export const OFFLINE_PROGRAMS: ProgramItem[] = [
       "Layanan pemindaian sidik jari tatap muka langsung bersama tim fasilitator JariBakat di sekolah atau event terdekat di kotamu.",
     image:
       "https://storage.googleapis.com/insightme-production/file/program/thumb/PNvr7ONxw3sgrs4KaCVMcIqgSFhevxkxV3kQBFzy.png",
-    href: "/event",
+    href: "https://wa.me/6285196235285",
   },
   {
     slug: "parenting-talk",
@@ -139,7 +139,7 @@ export const OFFLINE_PROGRAMS: ProgramItem[] = [
       "Workshop tatap muka memahami gaya belajar dan potensi tersembunyi anak berbasis data analisis sidik jari.",
     image:
       "https://storage.googleapis.com/insightme-production/file/program/thumb/mhz5McXb5A0QNLTFTGSVuMiYg7XU7Cc8fcaMEI9F.png",
-    href: "/event",
+    href: "https://wa.me/6285196235285",
   },
 ];
 
@@ -151,7 +151,7 @@ export const EXPERT_PROGRAMS: ProgramItem[] = [
       "Sesi konsultasi 1-on-1 mendalam bersama Analyst & Konsultan JariBakat bersertifikat untuk membedah hasil laporan tes sidik jari.",
     image:
       "https://storage.googleapis.com/insightme-production/file/program/thumb/qcilu5bVlP9fVXKvLswMJsNi8P9SzH556aVYMrnT.webp",
-    href: "/expert",
+    href: "https://wa.me/6285196235285",
   },
 ];
 
