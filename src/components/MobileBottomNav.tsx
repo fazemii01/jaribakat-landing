@@ -28,7 +28,7 @@ export default function MobileBottomNav() {
     },
     {
       name: "Event",
-      href: "https://www.insightme.id/event",
+      href: "/event",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -49,7 +49,7 @@ export default function MobileBottomNav() {
     },
     {
       name: "Expert",
-      href: "https://www.insightme.id/expert",
+      href: "/expert",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -70,8 +70,8 @@ export default function MobileBottomNav() {
       ),
     },
     {
-      name: "e-Learning",
-      href: "https://www.insightme.id/video-pembelajaran",
+      name: "Paket Bakat",
+      href: "/event",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +90,7 @@ export default function MobileBottomNav() {
     },
     {
       name: "Kalender",
-      href: "https://www.insightme.id/calendar",
+      href: "/calendar",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -117,11 +117,9 @@ export default function MobileBottomNav() {
         {navItems.map((item) => {
           const isActive = pathname === item.href || (item.href === "/" && pathname === "/");
           return (
-            <a
+            <Link
               key={item.name}
               href={item.href}
-              target={item.href.startsWith("http") ? "_blank" : "_self"}
-              rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
               className={`flex flex-col items-center gap-1 py-1 px-2 rounded-xl transition-colors ${
                 isActive
                   ? "text-[#1E1B4B] font-bold"
@@ -130,7 +128,7 @@ export default function MobileBottomNav() {
             >
               {item.icon}
               <span className="text-[11px] leading-none">{item.name}</span>
-            </a>
+            </Link>
           );
         })}
       </div>
