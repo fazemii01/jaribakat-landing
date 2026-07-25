@@ -200,7 +200,7 @@ export default function EventPage() {
                   </div>
 
                   <a
-                    href="https://wa.me/6281915237935"
+                    href="https://wa.me/6285196235285"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-[#F59E0B] hover:bg-[#D97706] text-white font-bold py-2.5 px-5 text-xs sm:text-sm rounded-full flex items-center gap-1.5 shadow-md hover:scale-105 transition-all cursor-pointer"
