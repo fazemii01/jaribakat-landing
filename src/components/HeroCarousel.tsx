@@ -34,7 +34,7 @@ export default function HeroCarousel() {
       <div className="relative w-full overflow-hidden h-[550px] sm:h-[680px] md:h-[780px] lg:h-[calc(100vh-120px)] min-h-[680px] max-h-[920px]">
         {/* Banner Images */}
         <picture key={slide.id} className="w-full h-full block relative">
-          <source media="(max-width: 767px)" srcSet={slide.mobileImage} />
+          <source media="(max-width: 767px)" srcSet={encodeURI(slide.mobileImage)} />
           <Image
             src={slide.desktopImage}
             alt={slide.alt}
