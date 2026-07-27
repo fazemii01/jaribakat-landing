@@ -55,7 +55,7 @@ export const BANNER_SLIDES: BannerSlide[] = [
   {
     id: "paket-anak-basic",
     desktopImage: "/images/banner-jaribakat.png",
-    mobileImage: "/images/jaribakat-banner-portrait.jpeg",
+    mobileImage: "/images/WhatsApp Image 2026-07-25 at 5.04.01 PM(1).jpeg",
     alt: "Paket Anak JariBakat - Menemukan Potensi Sejak Dini",
     ctaHref: "/event",
     ctaText: "Lihat Paket Bakat Anak",
@@ -63,21 +63,21 @@ export const BANNER_SLIDES: BannerSlide[] = [
   },
   {
     id: "paket-remaja-dewasa",
-    desktopImage: "/images/banner-jaribakat.png",
-    mobileImage: "/images/jaribakat-banner-portrait.jpeg",
-    alt: "Paket Remaja & Dewasa - Rekomendasi Jurusan & Karir",
+    desktopImage: "/images/banner-landscape2.jpeg",
+    mobileImage: "/images/WhatsApp Image 2026-07-25 at 5.24.43 PM.jpeg",
+    alt: "JariBakat - Laporan Lengkap & Rekomendasi Pengembangan Diri",
     ctaHref: "/event",
     ctaText: "Konsultasi Karir & Jurusan",
     ctaMobileText: "Konsultasi",
   },
   {
     id: "paket-keluarga",
-    desktopImage: "/images/banner-jaribakat.png",
-    mobileImage: "/images/jaribakat-banner-portrait.jpeg",
-    alt: "Paket Keluarga JariBakat - Harmony & Pola Asuh Tepat",
+    desktopImage: "/images/banner-landscape3.jpeg",
+    mobileImage: "/images/WhatsApp Image 2026-07-25 at 5.12.44 PM.jpeg",
+    alt: "Promo Kemerdekaan JariBakat - Diskon Spesial Rp 250.000",
     ctaHref: "/event",
-    ctaText: "Lihat Paket Keluarga",
-    ctaMobileText: "Paket Keluarga",
+    ctaText: "Lihat Paket Promo",
+    ctaMobileText: "Lihat Promo",
   },
 ];
 
